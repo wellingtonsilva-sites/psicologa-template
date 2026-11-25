@@ -227,10 +227,15 @@ h1 em, h2 em, h3 em {
 .hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  grid-template-areas:
+    "intro media"
+    "details media";
   align-items: center;
-  gap: clamp(40px, 6vw, 90px);
+  column-gap: clamp(40px, 6vw, 90px);
 }
 
+.hero__intro { grid-area: intro; align-self: end; }
+.hero__details { grid-area: details; align-self: start; }
 .hero__title { font-size: clamp(2.4rem, 6.2vw, 5.5rem); line-height: 1.02; margin-bottom: 28px; overflow-wrap: anywhere; }
 .hero__lead { font-size: clamp(1.02rem, 1.3vw, 1.15rem); max-width: 520px; margin-bottom: 38px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
@@ -241,7 +246,7 @@ h1 em, h2 em, h3 em {
 .hero__facts strong { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--ink); line-height: 1.1; }
 .hero__facts span { font-size: .82rem; line-height: 1.4; }
 
-.hero__media { position: relative; justify-self: center; width: min(100%, 470px); }
+.hero__media { grid-area: media; position: relative; justify-self: center; width: min(100%, 470px); }
 .hero__blob {
   position: absolute; inset: 12% -14% -6% 8%;
   background: var(--blush);
@@ -678,7 +683,9 @@ h1 em, h2 em, h3 em {
   .faq__grid,
   .contact__box { grid-template-columns: 1fr; }
 
-  .hero__media { width: min(86%, 420px); margin-top: 20px; }
+  .hero__grid { grid-template-areas: "intro" "media" "details"; }
+  .hero__lead { margin-bottom: 0; }
+  .hero__media { width: min(86%, 420px); margin-block: 24px 36px; }
   .hero__badge { left: -8%; }
   .circle-text { left: -8%; width: 100px; height: 100px; }
 
